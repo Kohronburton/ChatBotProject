@@ -3,147 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Independent concept demo of a WhatsApp AI automation workflow." />
-  <title>RelayDesk — WhatsApp Automation Demo</title>
+  <meta name="description" content="Interactive concept demo of a guarded WhatsApp AI automation command center." />
+  <meta name="theme-color" content="#07140f" />
+  <title>RelayDesk | WhatsApp AI Automation Demo</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#workspace">Skip to demo</a>
+  <a class="skip-link" href="#mainContent">Skip to demo</a>
   <header class="topbar">
-    <div class="brand" aria-label="RelayDesk home">
-      <span class="brand-mark">R</span>
-      <span>RelayDesk</span>
-    </div>
-    <div class="topbar-actions">
-      <span class="sim-pill"><span class="pulse"></span> Simulation online</span>
-      <button class="icon-button" id="themeButton" aria-label="Toggle color theme" title="Toggle color theme">◐</button>
-      <div class="avatar" aria-label="Signed in as Kohron">KB</div>
-    </div>
+    <a class="brand" href="#mainContent" aria-label="RelayDesk demo home"><span class="brand-mark">R</span><span>RelayDesk</span><em>Concept</em></a>
+    <div class="topbar-center" aria-label="Demo environment status"><span class="status-dot"></span><strong>Demo environment</strong><span>All systems simulated</span></div>
+    <div class="topbar-actions"><button class="icon-button" id="themeButton" aria-label="Toggle dark mode">◐</button><button class="avatar-button" aria-label="Demo user Kohron Burton">KB</button></div>
   </header>
+  <div class="disclosure" role="note"><strong>Independent concept demo based only on the public job description.</strong><span>It uses fictional data and is not the client’s production system.</span></div>
 
-  <div class="concept-banner" role="note">
-    <strong>Independent concept demo.</strong> Built from a public job description with fictional data. No live WhatsApp, OpenAI, or CRM connection.
-  </div>
-
-  <main id="workspace" class="shell">
-    <aside class="sidebar" aria-label="Main navigation">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Demo navigation">
       <nav>
-        <button class="nav-item active" data-view="inbox"><span>⌁</span> Inbox <b>3</b></button>
-        <button class="nav-item" data-view="workflows"><span>◇</span> Workflows</button>
-        <button class="nav-item" data-view="integrations"><span>⊞</span> Integrations</button>
-        <button class="nav-item" data-view="health"><span>◉</span> System health</button>
+        <button class="nav-item active" data-target="commandCenter"><span class="nav-icon">⌁</span><span>Command center</span><b>3</b></button>
+        <button class="nav-item" data-target="workflowSection"><span class="nav-icon">◇</span><span>Workflows</span></button>
+        <button class="nav-item" data-target="operationsSection" data-tab="approvals"><span class="nav-icon">✓</span><span>Approvals</span><b id="sidebarApprovalCount">2</b></button>
+        <button class="nav-item" data-target="operationsSection" data-tab="events"><span class="nav-icon">≡</span><span>Event log</span></button>
+        <button class="nav-item" data-target="operationsSection" data-tab="integrations"><span class="nav-icon">⊞</span><span>Integrations</span></button>
       </nav>
-      <div class="sidebar-footer">
-        <span class="eyebrow">DEMO BUSINESS</span>
-        <strong>Northstar Wellness</strong>
-        <span>Fictional workspace</span>
-      </div>
+      <div class="sidebar-card"><span class="eyebrow">SIMULATED WORKSPACE</span><strong>Northstar Wellness</strong><small>Fictional service business</small><div><i></i> Guardrails active</div></div>
     </aside>
 
-    <section class="content">
-      <div class="page-heading">
-        <div>
-          <p class="eyebrow">WHATSAPP OPERATIONS</p>
-          <h1>Customer automation, with a human in control.</h1>
-          <p class="subhead">See how a message becomes a qualified lead, a CRM update, and a follow-up—without losing the conversation.</p>
-        </div>
-        <button class="secondary-button" id="tourButton">▶ Run guided demo</button>
-      </div>
+    <main id="mainContent" class="main-content">
+      <section class="hero" id="commandCenter">
+        <div><p class="eyebrow">WHATSAPP OPERATIONS</p><h1>Every customer message becomes a clear next step.</h1><p>Watch the agent understand a request, follow business rules, ask for approval when needed, update the CRM, and recover from a provider failure.</p></div>
+        <div class="hero-actions"><button class="button ghost" id="resetButton">↻ Reset demo</button><button class="button primary" id="guidedDemoButton"><span>▶</span> Run guided demo</button></div>
+      </section>
 
-      <div class="metrics" aria-label="Demo metrics">
-        <article><span>Conversations today</span><strong id="conversationMetric">128</strong><small>↑ 18% from yesterday</small></article>
-        <article><span>Handled automatically</span><strong id="autoMetric">84%</strong><small>Within approved rules</small></article>
-        <article><span>Human handoffs</span><strong id="handoffMetric">7</strong><small>4 urgent · 3 requested</small></article>
-        <article><span>Median first reply</span><strong id="replyMetric">11s</strong><small>Target under 30 seconds</small></article>
-      </div>
+      <section class="story-strip" id="storyStrip" aria-live="polite"><div class="story-progress"><i id="storyProgress"></i></div><span class="story-step" id="storyStep">Ready</span><p id="storyText">Choose a conversation, type a message, or run the guided demo.</p><button class="text-button" id="stopDemoButton" hidden>Stop demo</button></section>
 
-      <section class="demo-grid" aria-label="Interactive WhatsApp automation demo">
-        <article class="panel conversation-panel">
-          <div class="panel-header">
-            <div class="contact">
-              <div class="avatar customer-avatar">MR</div>
-              <div><strong>Maya Rodriguez</strong><span><i class="online-dot"></i> WhatsApp · active now</span></div>
-            </div>
-            <span class="status-badge" id="conversationStatus">AI handling</span>
+      <section class="metrics" aria-label="Simulated operating metrics">
+        <article><div class="metric-label"><span>Conversations today</span><i>Live</i></div><strong id="conversationMetric">128</strong><small>18% above yesterday</small></article>
+        <article><div class="metric-label"><span>Handled automatically</span></div><strong id="automationMetric">84%</strong><small>Inside approved policies</small></article>
+        <article><div class="metric-label"><span>Needs human review</span></div><strong id="reviewMetric">2</strong><small id="reviewMetricText">1 refund · 1 low confidence</small></article>
+        <article><div class="metric-label"><span>Median first reply</span></div><strong>11s</strong><small>Target: under 30 seconds</small></article>
+      </section>
+
+      <section class="workspace-grid" aria-label="Interactive command center">
+        <article class="panel inbox-panel">
+          <div class="panel-heading compact"><div><span class="eyebrow">INBOX</span><h2>Conversations</h2></div><button class="mini-icon" id="inboxFilterButton" aria-label="Filter conversations">⌕</button></div>
+          <label class="search-box" id="inboxSearch" hidden><span>⌕</span><input id="conversationSearch" aria-label="Search conversations" placeholder="Search customers" /></label>
+          <div class="conversation-list" id="conversationList">
+            <button class="conversation-item active" data-conversation="maya"><span class="contact-avatar sand">MR</span><span class="conversation-copy"><strong>Maya Rodriguez</strong><small>Is there anything I need to bring?</small><em><i></i> Booking · AI handling</em></span><time>Now</time></button>
+            <button class="conversation-item" data-conversation="jordan"><span class="contact-avatar blue">JL</span><span class="conversation-copy"><strong>Jordan Lee</strong><small>I was charged twice.</small><em class="warning">● Payment · Review</em></span><time>4m</time></button>
+            <button class="conversation-item" data-conversation="amina"><span class="contact-avatar plum">AK</span><span class="conversation-copy"><strong>Amina Khan</strong><small>Can I move my appointment?</small><em><i></i> Scheduling · AI handling</em></span><time>11m</time></button>
           </div>
+          <div class="inbox-footer"><span><i></i> WhatsApp webhook healthy</span><button class="text-button" data-target="operationsSection" data-tab="events">View events</button></div>
+        </article>
 
-          <div class="chat" id="chat" aria-live="polite">
-            <div class="message incoming">
-              <p>Hi, I need help booking a first consultation. Do you have anything this Friday afternoon?</p>
-              <time>9:41 AM</time>
-            </div>
-            <div class="message outgoing">
-              <p>Hi Maya! I can help with that. I found two Friday openings: 2:30 PM and 4:00 PM. Which works better?</p>
-              <time>9:41 AM · AI reply</time>
-            </div>
-            <div class="message incoming">
-              <p>4:00 works. Is there anything I need to bring?</p>
-              <time>9:42 AM</time>
-            </div>
-          </div>
-
-          <div class="suggestion" id="suggestionBox">
-            <span>Suggested reply</span>
-            <p id="suggestedReply">Great—I'll hold Friday at 4:00 PM. Please bring a photo ID and arrive 10 minutes early. Would you like me to confirm the booking?</p>
-            <div>
-              <button class="primary-button" id="approveButton">Approve & send</button>
-              <button class="text-button" id="editButton">Edit</button>
-            </div>
-          </div>
-
-          <form class="composer" id="messageForm">
-            <label class="sr-only" for="messageInput">Customer message</label>
-            <input id="messageInput" maxlength="240" placeholder="Try: I need to reschedule my appointment" />
-            <button type="submit" aria-label="Send customer message">Send</button>
-          </form>
-          <div class="quick-prompts" aria-label="Example messages">
-            <button data-prompt="I need to reschedule my appointment">Reschedule</button>
-            <button data-prompt="Can I get a refund?">Refund</button>
-            <button data-prompt="I want to speak with a person">Human help</button>
+        <article class="panel chat-panel">
+          <div class="chat-header"><div class="chat-contact"><span class="contact-avatar sand" id="activeAvatar">MR</span><div><strong id="activeName">Maya Rodriguez</strong><small><i></i> WhatsApp · active now</small></div></div><div class="chat-controls"><span class="status-chip ai" id="conversationStatus">AI handling</span><button class="mini-icon" id="moreButton" aria-label="Conversation information">•••</button></div></div>
+          <div class="contact-summary" id="contactSummary" hidden><div><span>Customer since</span><strong id="customerSince">Mar 2026</strong></div><div><span>Last appointment</span><strong id="lastAppointment">Aug 18</strong></div><div><span>CRM status</span><strong>Active</strong></div></div>
+          <div class="chat" id="chat" aria-live="polite" aria-label="Conversation messages"></div>
+          <div class="composer-area">
+            <div class="suggested-reply" id="suggestionBox"><div><span><i>✦</i> Suggested reply</span><b id="policyLabel">Inside policy</b></div><p id="suggestedReply">Great, I’ll hold Friday at 4:00 PM. Please bring a photo ID and arrive 10 minutes early. Would you like me to confirm it?</p><div class="suggestion-actions"><button class="button primary small" id="approveButton">Approve & send</button><button class="button ghost small" id="editButton">Edit reply</button><button class="text-button danger" id="handoffButton">Send to a person</button></div></div>
+            <form class="composer" id="messageForm"><label class="sr-only" for="messageInput">Type a customer message</label><input id="messageInput" maxlength="240" autocomplete="off" placeholder="Type a customer message to test the agent…" /><button type="submit" aria-label="Send test message">➤</button></form>
+            <div class="quick-prompts" aria-label="Test scenarios"><span>Try:</span><button data-prompt="I need to reschedule my appointment">Reschedule</button><button data-prompt="I was charged twice and need a refund">Refund</button><button data-prompt="I want to speak with a person">Human help</button></div>
           </div>
         </article>
 
-        <div class="right-stack">
-          <article class="panel decision-panel">
-            <div class="panel-title"><div><span class="eyebrow">AGENT DECISION</span><h2>What the system understood</h2></div><span class="confidence" id="confidence">96% confidence</span></div>
-            <dl class="decision-list">
-              <div><dt>Intent</dt><dd id="intentValue">Book appointment</dd></div>
-              <div><dt>Customer</dt><dd>Maya Rodriguez</dd></div>
-              <div><dt>Requested time</dt><dd id="timeValue">Friday · 4:00 PM</dd></div>
-              <div><dt>Risk level</dt><dd><span class="risk-low" id="riskValue">Low</span></dd></div>
-            </dl>
-            <label class="toggle-row">
-              <span><strong>Human approval</strong><small>Required for money, complaints, and low-confidence replies.</small></span>
-              <input type="checkbox" id="approvalToggle" checked />
-              <i aria-hidden="true"></i>
-            </label>
-          </article>
+        <article class="panel intelligence-panel">
+          <div class="panel-heading"><div><span class="eyebrow">AGENT DECISION</span><h2>Why this action?</h2></div><span class="confidence" id="confidenceBadge">96%</span></div>
+          <div class="confidence-bar" aria-label="Agent confidence"><i id="confidenceBar" style="width:96%"></i></div>
+          <dl class="decision-grid"><div><dt>Intent</dt><dd id="intentValue">Book appointment</dd></div><div><dt>Priority</dt><dd id="priorityValue">Normal</dd></div><div><dt>Customer</dt><dd id="customerValue">Maya Rodriguez</dd></div><div><dt>Time found</dt><dd id="timeValue">Friday · 4:00 PM</dd></div></dl>
+          <div class="entity-block"><span class="section-label">EXTRACTED DETAILS</span><div id="entityTags"><b>Friday</b><b>4:00 PM</b><b>Consultation</b></div></div>
+          <div class="policy-card approved" id="policyCard"><div><span id="policyIcon">✓</span><div><strong id="policyTitle">Allowed with approval</strong><small id="policyReason">Booking can proceed after a person checks the reply.</small></div></div><button class="text-button" id="policyButton">View policy</button></div>
+          <div class="tool-plan"><span class="section-label">PLANNED ACTIONS</span><ol id="toolPlan"><li><i>1</i><span><strong>Hold appointment</strong><small>Scheduling API · write</small></span></li><li><i>2</i><span><strong>Update contact</strong><small>CRM · repeat-safe write</small></span></li><li><i>3</i><span><strong>Schedule reminder</strong><small>Workflow queue · 24 hours</small></span></li></ol></div>
+          <div class="guardrail-row"><span><strong>Human approval</strong><small>Money, complaints, and low confidence always stop here.</small></span><label class="switch"><input type="checkbox" id="approvalToggle" checked /><i></i><span class="sr-only">Human approval enabled</span></label></div>
+        </article>
+      </section>
 
-          <article class="panel workflow-panel">
-            <div class="panel-title"><div><span class="eyebrow">LIVE WORKFLOW</span><h2>Actions and audit trail</h2></div><button class="text-button danger-link" id="failureButton">Simulate failure</button></div>
-            <ol class="timeline" id="timeline">
-              <li class="done"><i>✓</i><div><strong>Message received</strong><span>WhatsApp webhook verified</span></div><time>9:42:03</time></li>
-              <li class="done"><i>✓</i><div><strong>Intent classified</strong><span>Booking · 96% confidence</span></div><time>9:42:04</time></li>
-              <li class="active"><i>3</i><div><strong>Awaiting approval</strong><span>Suggested reply ready</span></div><time>Now</time></li>
-              <li><i>4</i><div><strong>Update CRM</strong><span>Create appointment activity</span></div><time>Queued</time></li>
-              <li><i>5</i><div><strong>Schedule reminder</strong><span>24 hours before appointment</span></div><time>Queued</time></li>
-            </ol>
-          </article>
+      <section class="proof-section" aria-labelledby="proofTitle">
+        <div class="section-heading"><div><p class="eyebrow">PROBLEM → PROOF</p><h2 id="proofTitle">The posting asks for outcomes. This demo makes them visible.</h2></div><p>Nothing below claims a live provider connection. It shows the product decisions and failure handling I would carry into the real build.</p></div>
+        <div class="proof-grid">
+          <article><span>01</span><div><strong>Automate conversations</strong><p>Intent routing, useful replies, and a clean handoff when the agent should stop.</p></div><b>Shown live</b></article>
+          <article><span>02</span><div><strong>Connect business workflows</strong><p>Scheduling, CRM updates, reminders, and owner tasks are tracked as separate actions.</p></div><b>Shown live</b></article>
+          <article><span>03</span><div><strong>Handle failures safely</strong><p>Failed writes are kept, retried, and escalated without sending the same update twice.</p></div><b>Shown live</b></article>
+          <article><span>04</span><div><strong>Give operators control</strong><p>Approvals, audit records, provider health, and policy reasons stay visible.</p></div><b>Shown live</b></article>
         </div>
       </section>
 
-      <section class="architecture-section">
-        <div class="section-heading"><div><p class="eyebrow">SIMULATED ARCHITECTURE</p><h2>Clear boundaries. Safe fallbacks.</h2></div><p>Each step is logged, repeat-safe, and able to hand work to a person.</p></div>
-        <div class="architecture-grid">
-          <article><span class="arch-icon green">W</span><div><strong>WhatsApp Cloud API</strong><small>Webhook signature checked</small></div><b class="connected">Simulated</b></article>
-          <article><span class="arch-icon purple">AI</span><div><strong>Conversation agent</strong><small>Rules + structured output</small></div><b class="connected">Simulated</b></article>
-          <article><span class="arch-icon blue">CRM</span><div><strong>CRM connector</strong><small>Idempotent contact updates</small></div><b class="connected">Simulated</b></article>
-          <article><span class="arch-icon orange">Q</span><div><strong>Retry queue</strong><small>Backoff + dead-letter review</small></div><b class="connected">Ready</b></article>
-        </div>
+      <section class="workflow-section" id="workflowSection" aria-labelledby="workflowTitle">
+        <div class="section-heading"><div><p class="eyebrow">WORKFLOW MAP</p><h2 id="workflowTitle">One message. Five controlled steps.</h2></div><div class="section-actions"><button class="button ghost small" id="failureButton">⚠ Simulate CRM failure</button><button class="button primary small" id="retryButton" hidden>Retry now</button></div></div>
+        <div class="workflow-canvas" id="workflowCanvas"><article class="workflow-node complete"><span>1</span><div><small>TRIGGER</small><strong>WhatsApp message</strong><p>Verify signature and store event</p></div><b>✓</b></article><i class="connector complete"></i><article class="workflow-node complete"><span>2</span><div><small>UNDERSTAND</small><strong>Classify request</strong><p>Intent + structured details</p></div><b>✓</b></article><i class="connector active"></i><article class="workflow-node active"><span>3</span><div><small>CONTROL</small><strong>Policy checkpoint</strong><p id="workflowPolicyText">Human approval required</p></div><b>●</b></article><i class="connector"></i><article class="workflow-node"><span>4</span><div><small>ACTION</small><strong>Update CRM</strong><p>One repeat-safe write</p></div><b>4</b></article><i class="connector"></i><article class="workflow-node"><span>5</span><div><small>FOLLOW-UP</small><strong>Schedule next step</strong><p>Reminder or owner task</p></div><b>5</b></article></div>
+        <div class="event-summary" id="eventSummary"><span><i></i> Event <code>evt_7QF2M9</code></span><span>Received 9:42:03 AM</span><span>Last action: awaiting approval</span><button class="text-button" id="inspectEventButton">Inspect event</button></div>
       </section>
-    </section>
-  </main>
 
+      <section class="operations-section" id="operationsSection" aria-labelledby="operationsTitle">
+        <div class="section-heading"><div><p class="eyebrow">OPERATOR VIEW</p><h2 id="operationsTitle">Manage what needs attention.</h2></div><button class="button ghost small" id="exportButton">⇩ Export audit log</button></div>
+        <div class="tabs" role="tablist" aria-label="Operations views"><button role="tab" aria-selected="true" data-tab="approvals">Approvals <b id="tabApprovalCount">2</b></button><button role="tab" aria-selected="false" data-tab="events">Event log</button><button role="tab" aria-selected="false" data-tab="integrations">Integrations</button></div>
+        <div class="tab-view active" id="approvalsView" role="tabpanel"><div class="approval-list" id="approvalList"><article data-approval="refund"><span class="contact-avatar blue">JL</span><div><strong>Refund request from Jordan Lee</strong><p>Possible duplicate charge · $89.00 · Payment action blocked</p><small>Raised 4 minutes ago · High priority</small></div><span class="reason-pill high">Money movement</span><div class="row-actions"><button class="button ghost small" data-action="details">Review</button><button class="button primary small" data-action="assign">Assign to me</button></div></article><article data-approval="confidence"><span class="contact-avatar plum">AK</span><div><strong>Low-confidence scheduling reply</strong><p>Customer used an unclear date · Reply paused before sending</p><small>Raised 11 minutes ago · Normal priority</small></div><span class="reason-pill medium">68% confidence</span><div class="row-actions"><button class="button ghost small" data-action="details">Review</button><button class="button primary small" data-action="approve">Approve</button></div></article></div><div class="empty-state" id="approvalEmpty" hidden><span>✓</span><strong>Approval queue is clear</strong><p>Every sensitive or uncertain action has been reviewed.</p></div></div>
+        <div class="tab-view" id="eventsView" role="tabpanel" hidden><div class="log-toolbar"><label><span class="sr-only">Search events</span><input id="eventSearch" placeholder="Search event, customer, or action" /></label><select id="eventFilter" aria-label="Filter event status"><option value="all">All statuses</option><option value="success">Success</option><option value="review">Review</option><option value="failed">Failed</option></select></div><div class="table-wrap"><table><thead><tr><th>Event</th><th>Customer</th><th>Action</th><th>Status</th><th>Time</th><th></th></tr></thead><tbody id="eventTableBody"></tbody></table></div><div class="empty-state compact" id="eventEmpty" hidden><span>⌕</span><strong>No matching events</strong><p>Try a different search or status filter.</p></div></div>
+        <div class="tab-view" id="integrationsView" role="tabpanel" hidden><div class="integration-grid"><article><span class="integration-icon wa">W</span><div><strong>WhatsApp Cloud API</strong><p>Incoming and outgoing message transport</p><small>Last simulated event: 12s ago</small></div><b class="health healthy"><i></i> Simulated healthy</b></article><article><span class="integration-icon ai">AI</span><div><strong>LLM provider</strong><p>Structured intent and reply generation</p><small>Fallback model configured</small></div><b class="health healthy"><i></i> Simulated healthy</b></article><article><span class="integration-icon crm">CRM</span><div><strong>Northstar CRM</strong><p>Contacts, activities, and lead stages</p><small id="crmStatusText">Repeat-safe writes enabled</small></div><b class="health healthy" id="crmHealth"><i></i> Simulated healthy</b></article><article><span class="integration-icon queue">Q</span><div><strong>Retry queue</strong><p>Backoff, dead-letter review, and alerts</p><small id="queueStatusText">0 events waiting</small></div><b class="health healthy" id="queueHealth"><i></i> Ready</b></article></div></div>
+      </section>
+
+      <footer class="demo-footer"><div><strong>RelayDesk</strong><span>Independent portfolio concept · Fictional data only</span></div><p>Production work would add verified provider webhooks, secure secrets, authenticated staff access, retention rules, monitoring, and the client’s real business logic.</p></footer>
+    </main>
+  </div>
+
+  <dialog id="eventDialog" aria-labelledby="dialogTitle"><div class="dialog-header"><div><span class="eyebrow">AUDIT EVENT</span><h2 id="dialogTitle">evt_7QF2M9</h2></div><button class="mini-icon" id="closeDialogButton" aria-label="Close event details">×</button></div><pre id="eventJson"></pre><div class="dialog-actions"><button class="button ghost" id="copyEventButton">Copy event JSON</button><button class="button primary" id="doneDialogButton">Done</button></div></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="./app.js"></script>
 </body>
