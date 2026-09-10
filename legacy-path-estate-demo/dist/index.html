@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="LegacyPath is an independent concept demo of a guided estate-planning workflow.">
+  <title>LegacyPath | Guided estate planning demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="demo-notice">Independent concept demo based only on a public job description. Simulated data. Not legal advice or a production system.</div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="LegacyPath home"><span>LP</span>LegacyPath</a>
+    <nav aria-label="Main navigation"><a href="#how">How it works</a><a href="#services">Services</a><a href="#security">Your privacy</a></nav>
+    <button class="button small" data-start>Start my plan</button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">A clearer way to plan ahead</p>
+        <h1>Protect the people you love, one simple step at a time.</h1>
+        <p class="lede">Answer a guided set of questions, review everything in plain English, and create a personalized estate-planning draft.</p>
+        <div class="hero-actions"><button class="button" data-start>Build my will</button><a class="text-link" href="#how">See how it works →</a></div>
+        <div class="trust-row"><span>✓ Save your progress</span><span>✓ Private by design</span><span>✓ Review before download</span></div>
+      </div>
+      <aside class="hero-card" aria-label="Plan progress example">
+        <div class="mini-head"><span>YOUR PLAN</span><span class="status">In progress</span></div>
+        <div class="mini-progress"><i></i></div>
+        <h2>Last Will & Testament</h2>
+        <ul><li class="done">Personal details</li><li class="done">Family</li><li class="active">Your wishes</li><li>Review & create</li></ul>
+        <p>About 8 minutes remaining</p>
+      </aside>
+    </section>
+
+    <section class="how" id="how">
+      <p class="eyebrow">How it works</p><h2>Serious planning without the confusing process.</h2>
+      <div class="steps"><article><b>1</b><h3>Answer simple questions</h3><p>The interview changes based on your family and wishes.</p></article><article><b>2</b><h3>Check your answers</h3><p>See a clear summary and fix anything before moving on.</p></article><article><b>3</b><h3>Create your draft</h3><p>Complete a simulated checkout and download your document.</p></article></div>
+    </section>
+
+    <section class="services" id="services"><div><p class="eyebrow">One trusted starting point</p><h2>Plan for more than a will.</h2><p>Educational paths can explain wills, trusts, probate and life insurance before a customer makes a decision.</p></div><div class="service-grid"><article><span>01</span><h3>Wills</h3><p>Record guardians, gifts and final wishes.</p></article><article><span>02</span><h3>Trusts</h3><p>Learn how assets may be managed.</p></article><article><span>03</span><h3>Probate</h3><p>Understand the steps after a loss.</p></article><article><span>04</span><h3>Insurance</h3><p>Explore protection for loved ones.</p></article></div></section>
+
+    <section class="security" id="security"><div class="shield">✦</div><div><p class="eyebrow">Built for sensitive decisions</p><h2>Privacy and review belong in the workflow.</h2><p>This concept keeps sample answers in this browser only. A production version would add encrypted storage, identity controls, audit history, jurisdiction rules and attorney-approved templates.</p></div></section>
+
+    <section class="proof"><p class="eyebrow">Problem → working proof</p><h2>The public brief, translated into a usable product.</h2><div class="comparison"><article><h3>What the project needs</h3><ul><li>Figma-based responsive pages</li><li>Conditional will questionnaire</li><li>Automatic PDF generation</li><li>Payments and API-ready boundaries</li><li>Helpful customer chatbot</li></ul></article><article class="solution"><h3>What this demo proves</h3><ul><li>Polished responsive experience</li><li>Branching spouse and child questions</li><li>Personalized downloadable PDF</li><li>Safe simulated payment flow</li><li>Grounded support assistant with limits</li></ul></article></div></section>
+  </main>
+
+  <div class="wizard" id="wizard" hidden aria-hidden="true">
+    <div class="wizard-shell" role="dialog" aria-modal="true" aria-labelledby="wizardTitle">
+      <aside class="wizard-side"><a class="brand light" href="#"><span>LP</span>LegacyPath</a><p>LAST WILL & TESTAMENT</p><ol id="stepList"><li class="current">About you</li><li>Family</li><li>Your wishes</li><li>Review</li><li>Finish</li></ol><div class="privacy-note">🔒 Sample information stays on this device.</div></aside>
+      <section class="wizard-main">
+        <header><div><small id="stepLabel">STEP 1 OF 5</small><h2 id="wizardTitle">Tell us about yourself</h2></div><button class="icon-button" id="closeWizard" aria-label="Close questionnaire">×</button></header>
+        <div class="bar"><i id="progressBar"></i></div>
+        <form id="willForm" novalidate>
+          <div class="panel active" data-step="0">
+            <p>We’ll use this sample information to prepare your document.</p>
+            <label>Legal first name<input name="firstName" autocomplete="given-name" required maxlength="40" placeholder="Alex"></label>
+            <label>Legal last name<input name="lastName" autocomplete="family-name" required maxlength="40" placeholder="Morgan"></label>
+            <div class="two"><label>State<select name="state" required><option value="">Choose a state</option><option>Florida</option><option>New York</option><option>Texas</option><option>California</option></select></label><label>County<input name="county" required maxlength="50" placeholder="Miami-Dade"></label></div>
+          </div>
+          <div class="panel" data-step="1">
+            <p>Your answers control which questions appear next.</p>
+            <fieldset><legend>Are you currently married?</legend><label class="choice"><input type="radio" name="married" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="married" value="No"> No</label></fieldset>
+            <label id="spouseWrap" hidden>Spouse’s full legal name<input name="spouse" maxlength="80" placeholder="Jordan Morgan"></label>
+            <fieldset><legend>Do you have children?</legend><label class="choice"><input type="radio" name="children" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="children" value="No"> No</label></fieldset>
+            <div id="childrenWrap" hidden><label>Children’s names<textarea name="childNames" maxlength="250" placeholder="One name per line"></textarea></label><label>Guardian if a child is under 18<input name="guardian" maxlength="80" placeholder="Taylor Reed"></label></div>
+          </div>
+          <div class="panel" data-step="2">
+            <p>Choose who should carry out your instructions and how you want your estate handled.</p>
+            <label>Executor’s full legal name<input name="executor" required maxlength="80" placeholder="Casey Morgan"></label>
+            <label>Primary beneficiary<input name="beneficiary" required maxlength="80" placeholder="Jordan Morgan"></label>
+            <label>Share of remaining estate<select name="share" required><option value="">Choose a share</option><option>100%</option><option>75%</option><option>50%</option><option>Equal shares among named beneficiaries</option></select></label>
+            <label>Specific gift or instruction <span class="optional">Optional</span><textarea name="gift" maxlength="300" placeholder="Example: My watch goes to..."></textarea></label>
+          </div>
+          <div class="panel review" data-step="3"><p>Review the sample information below. Select Edit to go back.</p><div id="reviewCards"></div><label class="agree"><input type="checkbox" name="accuracy" required> I confirm that I reviewed these sample answers.</label></div>
+          <div class="panel finish" data-step="4"><div class="success-icon">✓</div><h3>Your draft is ready</h3><p>In a production system, payment would be confirmed securely before the final document is released.</p><div class="order"><span>Last Will & Testament</span><strong>$49.00</strong></div><button type="button" class="button wide" id="payButton">Simulate secure payment</button><div id="downloadArea" hidden><p class="paid">✓ Simulated payment approved</p><button type="button" class="button wide" id="downloadPdf">Download sample PDF</button></div><small>No real payment is collected. This document is a fictional demonstration and is not legally valid.</small></div>
+          <p class="form-error" id="formError" role="alert"></p>
+          <footer><button type="button" class="button secondary" id="backButton">Back</button><span id="saveStatus">Saved on this device</span><button type="button" class="button" id="nextButton">Continue</button></footer>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <button class="chat-launch" id="chatLaunch" aria-label="Open support assistant">💬 <span>Questions?</span></button>
+  <aside class="chat" id="chat" hidden aria-label="LegacyPath support assistant"><header><div><strong>LegacyPath Guide</strong><small>General information only</small></div><button class="icon-button" id="closeChat" aria-label="Close support assistant">×</button></header><div class="messages" id="messages"><div class="bot">Hi! I can explain how this demo works. I can’t give legal advice. Try asking “What is probate?” or “Is my information saved?”</div></div><form id="chatForm"><label class="sr-only" for="chatInput">Ask a question</label><input id="chatInput" maxlength="160" placeholder="Ask a question..."><button aria-label="Send message">↑</button></form></aside>
+
+  <footer class="site-footer"><div class="brand light"><span>LP</span>LegacyPath</div><p>Independent concept demonstration · Fictional information only · Not legal advice</p></footer>
+  <script src="app.js"></script>
+</body>
+</html>
