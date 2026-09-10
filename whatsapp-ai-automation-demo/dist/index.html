@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Independent concept demo of a WhatsApp AI automation workflow." />
+  <title>RelayDesk — WhatsApp Automation Demo</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to demo</a>
+  <header class="topbar">
+    <div class="brand" aria-label="RelayDesk home">
+      <span class="brand-mark">R</span>
+      <span>RelayDesk</span>
+    </div>
+    <div class="topbar-actions">
+      <span class="sim-pill"><span class="pulse"></span> Simulation online</span>
+      <button class="icon-button" id="themeButton" aria-label="Toggle color theme" title="Toggle color theme">◐</button>
+      <div class="avatar" aria-label="Signed in as Kohron">KB</div>
+    </div>
+  </header>
+
+  <div class="concept-banner" role="note">
+    <strong>Independent concept demo.</strong> Built from a public job description with fictional data. No live WhatsApp, OpenAI, or CRM connection.
+  </div>
+
+  <main id="workspace" class="shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <nav>
+        <button class="nav-item active" data-view="inbox"><span>⌁</span> Inbox <b>3</b></button>
+        <button class="nav-item" data-view="workflows"><span>◇</span> Workflows</button>
+        <button class="nav-item" data-view="integrations"><span>⊞</span> Integrations</button>
+        <button class="nav-item" data-view="health"><span>◉</span> System health</button>
+      </nav>
+      <div class="sidebar-footer">
+        <span class="eyebrow">DEMO BUSINESS</span>
+        <strong>Northstar Wellness</strong>
+        <span>Fictional workspace</span>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">WHATSAPP OPERATIONS</p>
+          <h1>Customer automation, with a human in control.</h1>
+          <p class="subhead">See how a message becomes a qualified lead, a CRM update, and a follow-up—without losing the conversation.</p>
+        </div>
+        <button class="secondary-button" id="tourButton">▶ Run guided demo</button>
+      </div>
+
+      <div class="metrics" aria-label="Demo metrics">
+        <article><span>Conversations today</span><strong id="conversationMetric">128</strong><small>↑ 18% from yesterday</small></article>
+        <article><span>Handled automatically</span><strong id="autoMetric">84%</strong><small>Within approved rules</small></article>
+        <article><span>Human handoffs</span><strong id="handoffMetric">7</strong><small>4 urgent · 3 requested</small></article>
+        <article><span>Median first reply</span><strong id="replyMetric">11s</strong><small>Target under 30 seconds</small></article>
+      </div>
+
+      <section class="demo-grid" aria-label="Interactive WhatsApp automation demo">
+        <article class="panel conversation-panel">
+          <div class="panel-header">
+            <div class="contact">
+              <div class="avatar customer-avatar">MR</div>
+              <div><strong>Maya Rodriguez</strong><span><i class="online-dot"></i> WhatsApp · active now</span></div>
+            </div>
+            <span class="status-badge" id="conversationStatus">AI handling</span>
+          </div>
+
+          <div class="chat" id="chat" aria-live="polite">
+            <div class="message incoming">
+              <p>Hi, I need help booking a first consultation. Do you have anything this Friday afternoon?</p>
+              <time>9:41 AM</time>
+            </div>
+            <div class="message outgoing">
+              <p>Hi Maya! I can help with that. I found two Friday openings: 2:30 PM and 4:00 PM. Which works better?</p>
+              <time>9:41 AM · AI reply</time>
+            </div>
+            <div class="message incoming">
+              <p>4:00 works. Is there anything I need to bring?</p>
+              <time>9:42 AM</time>
+            </div>
+          </div>
+
+          <div class="suggestion" id="suggestionBox">
+            <span>Suggested reply</span>
+            <p id="suggestedReply">Great—I'll hold Friday at 4:00 PM. Please bring a photo ID and arrive 10 minutes early. Would you like me to confirm the booking?</p>
+            <div>
+              <button class="primary-button" id="approveButton">Approve & send</button>
+              <button class="text-button" id="editButton">Edit</button>
+            </div>
+          </div>
+
+          <form class="composer" id="messageForm">
+            <label class="sr-only" for="messageInput">Customer message</label>
+            <input id="messageInput" maxlength="240" placeholder="Try: I need to reschedule my appointment" />
+            <button type="submit" aria-label="Send customer message">Send</button>
+          </form>
+          <div class="quick-prompts" aria-label="Example messages">
+            <button data-prompt="I need to reschedule my appointment">Reschedule</button>
+            <button data-prompt="Can I get a refund?">Refund</button>
+            <button data-prompt="I want to speak with a person">Human help</button>
+          </div>
+        </article>
+
+        <div class="right-stack">
+          <article class="panel decision-panel">
+            <div class="panel-title"><div><span class="eyebrow">AGENT DECISION</span><h2>What the system understood</h2></div><span class="confidence" id="confidence">96% confidence</span></div>
+            <dl class="decision-list">
+              <div><dt>Intent</dt><dd id="intentValue">Book appointment</dd></div>
+              <div><dt>Customer</dt><dd>Maya Rodriguez</dd></div>
+              <div><dt>Requested time</dt><dd id="timeValue">Friday · 4:00 PM</dd></div>
+              <div><dt>Risk level</dt><dd><span class="risk-low" id="riskValue">Low</span></dd></div>
+            </dl>
+            <label class="toggle-row">
+              <span><strong>Human approval</strong><small>Required for money, complaints, and low-confidence replies.</small></span>
+              <input type="checkbox" id="approvalToggle" checked />
+              <i aria-hidden="true"></i>
+            </label>
+          </article>
+
+          <article class="panel workflow-panel">
+            <div class="panel-title"><div><span class="eyebrow">LIVE WORKFLOW</span><h2>Actions and audit trail</h2></div><button class="text-button danger-link" id="failureButton">Simulate failure</button></div>
+            <ol class="timeline" id="timeline">
+              <li class="done"><i>✓</i><div><strong>Message received</strong><span>WhatsApp webhook verified</span></div><time>9:42:03</time></li>
+              <li class="done"><i>✓</i><div><strong>Intent classified</strong><span>Booking · 96% confidence</span></div><time>9:42:04</time></li>
+              <li class="active"><i>3</i><div><strong>Awaiting approval</strong><span>Suggested reply ready</span></div><time>Now</time></li>
+              <li><i>4</i><div><strong>Update CRM</strong><span>Create appointment activity</span></div><time>Queued</time></li>
+              <li><i>5</i><div><strong>Schedule reminder</strong><span>24 hours before appointment</span></div><time>Queued</time></li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="architecture-section">
+        <div class="section-heading"><div><p class="eyebrow">SIMULATED ARCHITECTURE</p><h2>Clear boundaries. Safe fallbacks.</h2></div><p>Each step is logged, repeat-safe, and able to hand work to a person.</p></div>
+        <div class="architecture-grid">
+          <article><span class="arch-icon green">W</span><div><strong>WhatsApp Cloud API</strong><small>Webhook signature checked</small></div><b class="connected">Simulated</b></article>
+          <article><span class="arch-icon purple">AI</span><div><strong>Conversation agent</strong><small>Rules + structured output</small></div><b class="connected">Simulated</b></article>
+          <article><span class="arch-icon blue">CRM</span><div><strong>CRM connector</strong><small>Idempotent contact updates</small></div><b class="connected">Simulated</b></article>
+          <article><span class="arch-icon orange">Q</span><div><strong>Retry queue</strong><small>Backoff + dead-letter review</small></div><b class="connected">Ready</b></article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
